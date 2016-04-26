@@ -19,9 +19,9 @@ We then went to configure SSL for the openldap packages leveraged by ScaleIO. Fi
 
 We then need to create the openldap cacert directory where trusted ssl certificates can be placed
 
-`cd /etc/openldap/`
-`mkdir cacerts`
-`cd cacerts/`
+`cd /etc/openldap/`  
+`mkdir cacerts`  
+`cd cacerts/`  
 
 Then we need to insure that directory we just created is known to openldap. If you look at the /etc/openldap/ldap.conf file you should see a line that resembles
 

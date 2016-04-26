@@ -1,15 +1,10 @@
 ---
-layout: page
-title: About
-permalink: /about/
+layout: default
+title: About Chuck Chiambalero
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
-
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+<div class="post">
+	<h1 class="pageTitle">About Chuck Chiambalero</h1>
+	<img src="{{ '/assets/img/touring.jpg' | prepend: site.baseurl }}" alt="">
+	<p class="intro">I am a part time philosopher and a full time nerd.  If i'm not crushing a new technology, i'm chilling out watching a Chris Seaver flick
+</div>
