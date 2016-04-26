@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "configuring Active Directory and ScaleIO secure authentication"
+title:  "Configuring Active Directory and ScaleIO Secure Authentication"
 date:   2016-04-25 19:25:46 -0400
 categories: scaleio AD
 ---
