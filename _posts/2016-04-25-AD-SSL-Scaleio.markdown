@@ -11,7 +11,7 @@ Before we go any further, i recommend giving the ldap services names during the 
 
 Configuring an LDAP:// uri is well covered in “User-Roles-and-LDAP-Usage-Technical-Notes” available on emc.com. I’ll try to stay away from any repetitive recomendations, but i will say that several of the methods below (especially the ldapsearch commands since they are coming from the machine running the MDM itself) can help work through the configuration of non-secure connections as well.
 
-At this point, we deleted and recreated the non-secure ldap service with a secure ldaps:// URI’s using the scli –remove_ldap_service and scli –add_ldap_service command and assigned a group to the monitor role via scli –assign_ldap_groups_to_roles.
+At this point, we deleted and recreated the non-secure ldap service with a secure ldaps:// URI using the scli –remove_ldap_service and scli –add_ldap_service command and assigned a group to the monitor role via scli –assign_ldap_groups_to_roles.
 
 We then went to configure SSL for the openldap packages leveraged by ScaleIO. First, the certs that are used to secure the LDAP service on the domain controller (typically given to you by the directory team) may need to be converted to more a useful format (here we are translating to a .pem file).
 
@@ -62,12 +62,12 @@ note you could run a similar command against any SSL enabled server:port to see 
 
 `openssl s_client -connect google.com:443`
 
-Now that we have openldap configured to be able to trust the LDAP’s server certificates and have verified the SSL connection to the ldap server. We can test LDAPS with a tool called ldapsearch. I’ll try to describe some of the switches we’re using below which should be enough to get things going.
+Now that we have openldap configured to be able to trust the LDAP’s server certificates and have verified the SSL connection to the ldap server. We can test LDAPS with a tool called ldapsearch. I’ll try to describe some of the switches we’re using below which should be enough to get things going for most.
 
 -x :use simple authentication, username and password over ssl in this case  
 -H : uri for the ldap server, notice the “ldaps” deisgnation in the protocol name, i believe you can append a port here too  
 -b :base dn for the search, this should be the same as the –ldap_base_dn used when creating the ldap service for scaleio  
--d : username in the form of a upn (user principal name) as this is the way ScaleIO handles the username  
+-d : username in the form of a upn (user principal name - user1@esat.corp.scaleio.lab).  Scaleio leverages the prefix to determine the samaccountname.  It then parses the suffix and uses these values to determine which ldap_serivce to use to authenticate the user.  
 -W :ldap search string (take a look a the LDAP RFC’s if you want more info, they are not that bad)  
 
 First a simple search that returns the user object:
