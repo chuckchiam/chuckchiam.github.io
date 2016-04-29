@@ -72,7 +72,7 @@ Now that we have openldap configured to be able to trust the LDAP’s server cer
 
 First a simple search that returns the user object:
 
-`ldapsearch -x -H ldaps://ad-east.east.corp.scaleio.lab -b 'DC=east,DC=corp,DC=scaleio,DC=lab' -D 'user1@east.corp.scaleio.lab' -W '(&(objectClass=user)(sAMAccountName=user1))'``
+`ldapsearch -x -H ldaps://ad-east.east.corp.scaleio.lab -b 'DC=east,DC=corp,DC=scaleio,DC=lab' -D 'user1@east.corp.scaleio.lab' -W '(&(objectClass=user)(sAMAccountName=user1))'`
 
 we are doing a simple query for user1. This should return the attributes of the user similar to this
 
@@ -195,3 +195,9 @@ numReferences: 1
 A note about users and groups in this example. I have a user, “user1” who belongs to a group “monitor-users”. “monitor-users” in turn is a member of another group “monitor-perms”. Monitor-perms was the group designated in the –assign_ldap_groups_to_roles command via the –monitor_role_dn paramter. This represents a security model where you create two groups, one with permissions and one with users, then nest the users group in the group with permissions.
 
 If all of these succeed, then the `scli –login –username user1@east.corp.scaleio.lab –ldap_authentication` command should allow us to login and execute `scli –query_all`.
+
+If things aren't going your way, here are a few more tips.
+
+One customer i was working with was having trouble getting ldapsearch to work.  For some reason, openldap was not respecting the TLS_CACERTDIR entry in the ldap.conf.  However when we supplied the location of the cert as an environment variable on the commandline like this `LDAPTLS_CACERT=/etc/openldap/cacert/certificate.pem ldapsearch -x -H ldaps://ad-east.east.corp.scaleio.lab -b 'DC=east,DC=corp,DC=scaleio,DC=lab' -D 'user1@east.corp.scaleio.lab' -W '(&(objectClass=user)(sAMAccountName=user1))'` the serach completed successfully.  We added `TLS_CACERT /etc/openldap/cacert/certificate.pem` to the ldap.conf and everything started working.
+
+One thing I've noticed is that after working through some configurations and adding entries to the ldap.conf file, it sometimes takes a restart of the mdm to get the changes to take.  something like a `service mdm restart` or a `systemctl restart mdm`.
