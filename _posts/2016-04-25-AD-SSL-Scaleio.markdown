@@ -9,7 +9,7 @@ I was helping someone enable AD authentication in their environment and once the
 
 Before we go any further, i recommend giving the ldap services names during the –add_ldap_service command with the –ldap_service_name switch as this makes it easier (at least in my experience) to manage the various ldap service objects as opposed to using an objectID.
 
-Configuring an LDAP:// uri is well covered in “User-Roles-and-LDAP-Usage-Technical-Notes” available on emc.com. I’ll try to stay away from any repetitive recomendations, but i will say that several of the methods below (especially the ldapsearch commands since they are coming from the machine running the MDM itself) can help work through the configuration of non-secure connections as well.
+Configuring an LDAP:// uri is well covered in “User-Roles-and-LDAP-Usage-Technical-Notes” available on emc.com. I’ll try to stay away from any repetitive recommendations, but i will say that several of the methods below (especially the ldapsearch commands since they are coming from the machine running the MDM itself) can help work through the configuration of non-secure connections as well.
 
 At this point, we deleted and recreated the non-secure ldap service with a secure ldaps:// URI using the scli –remove_ldap_service and scli –add_ldap_service command and assigned a group to the monitor role via scli –assign_ldap_groups_to_roles.
 
@@ -133,7 +133,7 @@ numReferences: 1
 
 Then we can run a more complex search
 
-`ldapsearch -x -H ldaps://ad-east.east.corp.scaleio.lab -b 'DC=east,DC=corp,DC=scaleio,DC=lab' -D 'user2@east.corp.scaleio.lab' -W '(&(objectClass=user)(sAMAccountName=user1)(memberOf:1.2.840.113556.1.4.1941:='CN=monitor_group,OU=Corporate-Users,DC=scaleio,DC=lab'))``
+`ldapsearch -x -H ldaps://ad-east.east.corp.scaleio.lab -b 'DC=east,DC=corp,DC=scaleio,DC=lab' -D 'user2@east.corp.scaleio.lab' -W '(&(objectClass=user)(sAMAccountName=user1)(memberOf:1.2.840.113556.1.4.1941:='CN=monitor_group,OU=Corporate-Users,DC=scaleio,DC=lab'))`
 
 Here we are doing a search similar to the search that ScaleIO performs. Note that the use of the OID in the LDAP search means that we will get memberof information for nested groups (which the simpler search above will not return).
 
@@ -200,4 +200,4 @@ If things aren't going your way, here are a few more tips.
 
 One customer i was working with was having trouble getting ldapsearch to work.  For some reason, openldap was not respecting the TLS_CACERTDIR entry in the ldap.conf.  However when we supplied the location of the cert as an environment variable on the commandline like this `LDAPTLS_CACERT=/etc/openldap/cacert/certificate.pem ldapsearch -x -H ldaps://ad-east.east.corp.scaleio.lab -b 'DC=east,DC=corp,DC=scaleio,DC=lab' -D 'user1@east.corp.scaleio.lab' -W '(&(objectClass=user)(sAMAccountName=user1))'` the serach completed successfully.  We added `TLS_CACERT /etc/openldap/cacert/certificate.pem` to the ldap.conf and everything started working.
 
-One thing I've noticed is that after working through some configurations and adding entries to the ldap.conf file, it sometimes takes a restart of the mdm to get the changes to take.  something like a `service mdm restart` or a `systemctl restart mdm`.
+One thing I've noticed is that after working through some configurations and adding entries to the ldap.conf file, it sometimes takes a restart of the mdm to get the changes to take.  something like a `service mdm restart` or a `systemctl restart mdm`. 
