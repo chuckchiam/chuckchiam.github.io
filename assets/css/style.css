@@ -229,7 +229,7 @@ td, th {
     padding: 0
 }
 .button, .button-secondary, .button-tertiary, .button__outline {
-    background-color: #2e8b57;
+    background-color: #0047ab;
     display: inline-block;
     position: relative;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -270,11 +270,11 @@ td, th {
 }
 .button__outline {
     background-color: transparent;
-    border: 3px solid #2e8b57;
-    color: #2e8b57
+    border: 3px solid #0047ab;
+    color: #0047ab
 }
 .button__outline:hover {
-    background-color: #2e8b57;
+    background-color: #0047ab;
     color: #fff
 }
 label {
@@ -291,7 +291,7 @@ input[type=text], input[type=email], input[type=phone], input[type=password], in
     margin-bottom: .5rem
 }
 input[type=text]:focus, input[type=email]:focus, input[type=phone]:focus, input[type=password]:focus, input[type=number]:focus, input[type=search]:focus, textarea:focus {
-    border: 1px solid #2e8b57
+    border: 1px solid #0047ab
 }
 input[type=text].full-width, input[type=email].full-width, input[type=phone].full-width, input[type=password].full-width, input[type=number].full-width, input[type=search].full-width, textarea.full-width {
     width: 100%
@@ -524,11 +524,11 @@ body p, body ul {
     margin: 0 0 2rem
 }
 ::-moz-selection {
-    background: #2e8b57;
+    background: #0047ab;
     color: white
 }
 ::selection {
-    background: #2e8b57;
+    background: #0047ab;
     color: white
 }
 img, video, audio, iframe, object {
@@ -564,7 +564,7 @@ a:hover {
 .nav-collapse ul li {
     width: 100%;
     display: block;
-    background: #2e8b57;
+    background: #0047ab;
     border-bottom: 2px solid #349e63
 }
 .nav-collapse ul li a {
@@ -597,7 +597,7 @@ a:hover {
     float: right;
     line-height: 2em;
     margin-top: .5em;
-    background-color: #2e8b57;
+    background-color: #0047ab;
     border-radius: 4px;
     padding: 0 .5em;
     color: white;
@@ -682,7 +682,7 @@ dd {
     content: "";
     position: absolute;
     top: -1.25em;
-    background: #2e8b57;
+    background: #0047ab;
     display: block;
     height: 2px;
     width: 150px;
@@ -692,7 +692,7 @@ dd {
     content: "";
     position: absolute;
     bottom: -1.25em;
-    background: #2e8b57;
+    background: #0047ab;
     display: block;
     height: 2px;
     width: 150px;
@@ -725,7 +725,7 @@ dd {
     margin-bottom: 2rem
 }
 .post .dropcap {
-    color: #2e8b57;
+    color: #0047ab;
     margin-right: .45rem
 }
 .post .featuredImage {
@@ -835,7 +835,7 @@ dd {
     height: 100%
 }
 .footer-links ul li a svg .outer-shape {
-    fill: #2e8b57
+    fill: #0047ab
 }
 .footer-links ul li a svg .inner-shape {
     fill: white
