@@ -259,7 +259,7 @@ td, th {
 .button-secondary {
     background-color: #233E5B
 }
-.button-secondary:hover {
+.button-secondary:00275f {
     background-color: #152536
 }
 .button-tertiary {
@@ -549,7 +549,7 @@ a {
     color: #0047ab
 }
 a:hover {
-    color: #1b5233
+    color: #00275f
 }
 .nav-collapse {
     z-index: 1
