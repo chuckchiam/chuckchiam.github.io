@@ -251,7 +251,7 @@ td, th {
 .button:hover, .button-secondary:hover, .button-tertiary:hover, .button__outline:hover, .button:focus, .button-secondary:focus, .button-tertiary:focus, .button__outline:focus {
     color: #fff;
     text-decoration: none;
-    background-color: #21653f
+    background-color: #0067f8
 }
 .button:active, .button-secondary:active, .button-tertiary:active, .button__outline:active {
     top: 1px
@@ -565,7 +565,7 @@ a:hover {
     width: 100%;
     display: block;
     background: #0047ab;
-    border-bottom: 2px solid #349e63
+    border-bottom: 2px solid #0067f8
 }
 .nav-collapse ul li a {
     color: white;
@@ -609,7 +609,7 @@ a:hover {
 }
 .nav-toggle:hover {
     color: white;
-    background-color: #21653f
+    background-color: #0067f8
 }
 .noList {
     list-style: none;
@@ -841,7 +841,7 @@ dd {
     fill: white
 }
 .footer-links ul li:hover a svg .outer-shape {
-    fill: #21653f
+    fill: #0067f8
 }
 .pagination .next {
     float: left
